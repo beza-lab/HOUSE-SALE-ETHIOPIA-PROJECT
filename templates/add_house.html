@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add House
+{% endblock %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header">
+        <h3>Add New House</h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <input class="form-control mb-3"
+                   name="title"
+                   placeholder="Title">
+
+            <input class="form-control mb-3"
+                   name="price"
+                   placeholder="Price">
+
+            <input class="form-control mb-3"
+                   name="city"
+                   placeholder="City">
+
+            <input class="form-control mb-3"
+                   name="address"
+                   placeholder="Address">
+
+            <input class="form-control mb-3"
+                   type="number"
+                   name="bedrooms"
+                   placeholder="Bedrooms"
+                   required>
+
+            <input class="form-control mb-3"
+                   type="number"
+                   name="bathrooms"
+                   placeholder="Bathrooms"
+                   required>
+
+            <textarea class="form-control mb-3"
+                      name="description"></textarea>
+
+            <div class="mb-3">
+
+                <label>House Image</label>
+
+                <input type="file"
+                        name="image"
+                        class="form-control">
+
+            </div>
+
+            <button class="btn btn-success">
+                Save House
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<table class="table">
+
+<tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>City</th>
+    <th>Action</th>
+</tr>
+
+{% for house in houses %}
+
+<tr>
+
+    <td>{{ house.id }}</td>
+    <td>{{ house.title }}</td>
+    <td>{{ house.city }}</td>
+
+    <td>
+
+        <a href="/delete_house/{{ house.id }}"
+           class="btn btn-danger">
+            Delete
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

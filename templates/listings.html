@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Listings
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Search Results
+</h2>
+
+<div class="row">
+
+{% if houses %}
+
+    {% for house in houses %}
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card shadow">
+
+            <img src="{{ url_for('static', filename='uploads/' + house.image) }}"
+                 class="card-img-top">
+
+            <div class="card-body">
+
+                <h4>
+                    {{ house.title }}
+
+                    {% if loop.first %}
+                    <span class="badge bg-danger">
+                        NEW
+                    </span>
+                    {% endif %}
+                </h4>
+
+                <p>City: {{ house.city }}</p>
+
+                <p>Price: {{ house.price }} ETB</p>
+
+                <p>{{ house.bedrooms }} Bedrooms</p>
+
+                <p>{{ house.bathrooms }} Bathrooms</p>
+
+                <a href="/house/{{ house.id }}"
+                   class="btn btn-primary">
+                    View Details
+                </a>
+
+                {% if current_user.is_authenticated %}
+
+                    {% if current_user.role == 'admin'
+                       or current_user.id == house.owner_id %}
+
+                        <a href="/edit_house/{{ house.id }}"
+                           class="btn btn-warning">
+                            Edit
+                        </a>
+
+                        <a href="/delete_house/{{ house.id }}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Delete this house?')">
+                            Delete
+                        </a>
+
+                    {% endif %}
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="alert alert-warning">
+        No matching houses found.
+    </div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

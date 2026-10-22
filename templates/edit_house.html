@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header">
+        <h3>Edit House</h3>
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <input
+                class="form-control mb-3"
+                name="title"
+                value="{{ house.title }}">
+
+            <input
+                class="form-control mb-3"
+                name="price"
+                value="{{ house.price }}">
+
+            <input
+                class="form-control mb-3"
+                name="city"
+                value="{{ house.city }}">
+
+            <input
+                class="form-control mb-3"
+                name="address"
+                value="{{ house.address }}">
+
+            <button class="btn btn-success">
+                Update House
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
